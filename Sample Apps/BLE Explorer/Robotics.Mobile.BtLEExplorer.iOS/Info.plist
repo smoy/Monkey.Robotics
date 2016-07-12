@@ -9,7 +9,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
-	<string>7.0</string>
+	<string>9.3</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
@@ -43,6 +43,8 @@
 		<string>Icon-Small</string>
 	</array>
 	<key>CFBundleDisplayName</key>
+	<string>BLE Explorer</string>
+	<key>CFBundleName</key>
 	<string>BLE Explorer</string>
 </dict>
 </plist>
