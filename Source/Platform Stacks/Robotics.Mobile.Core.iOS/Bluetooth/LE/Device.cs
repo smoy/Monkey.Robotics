@@ -21,6 +21,8 @@ namespace Robotics.Mobile.Core.Bluetooth.LE
 		{
 			this._nativeDevice = nativeDevice;
 
+			try {
+
 			#if __UNIFIED__
 			// fixed for Unified https://bugzilla.xamarin.com/show_bug.cgi?id=14893
 			this._nativeDevice.DiscoveredCharacteristic += (object sender, CBServiceEventArgs e) => {
@@ -54,6 +56,13 @@ namespace Robotics.Mobile.Core.Bluetooth.LE
 					}
 				}			
 			};
+
+			}
+
+			catch (Exception e)
+			{
+
+			}
 		}
 
 		public override Guid ID {
@@ -126,7 +135,6 @@ namespace Robotics.Mobile.Core.Bluetooth.LE
 		public void Disconnect ()
 		{
 			Adapter.Current.DisconnectDevice (this);
-			this._nativeDevice.Dispose ();
 		}
 
 		#endregion
