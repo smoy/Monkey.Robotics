@@ -67,13 +67,16 @@ namespace Robotics.Mobile.Core.Bluetooth.LE
 
 		public override Guid ID {
 			get {
-				//TODO: not sure if this is right. hell, not even sure if a 
-				// device should have a UDDI. iOS BLE peripherals do, though.
-				// need to look at the BLE Spec
-				// Actually.... deprecated in iOS7!
-				// Actually again, Uuid is, but Identifier isn't.
-				//return _nativeDevice.Identifier.AsString ();//.ToString();
-				return Guid.ParseExact(_nativeDevice.Identifier.AsString (), "d");
+				var identifier = _nativeDevice.Identifier;
+				if (identifier != null)
+				{
+					return Guid.ParseExact(_nativeDevice.Identifier.AsString (), "d");
+				}
+				else
+				{
+					// just to handle when things are unexpected
+					return Guid.Empty;
+				}
 			}
 		}
 
