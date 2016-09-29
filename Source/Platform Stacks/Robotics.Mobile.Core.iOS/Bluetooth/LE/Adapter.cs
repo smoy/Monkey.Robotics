@@ -203,8 +203,14 @@ namespace Robotics.Mobile.Core.Bluetooth.LE
 		// util
 		protected bool ContainsDevice(IEnumerable<IDevice> list, CBPeripheral device)
 		{
+			var deviceIdentifier = Guid.Empty;
+                	if (device != null && device.Identifier != null)
+			{
+				deviceIdentifier = Guid.ParseExact(device.Identifier.AsString (), "d");
+			}
+
 			foreach (var d in list) {
-				if (Guid.ParseExact(device.Identifier.AsString(), "d") == d.ID)
+				if (deviceIdentifier == d.ID)
 					return true;
 			}
 			return false;

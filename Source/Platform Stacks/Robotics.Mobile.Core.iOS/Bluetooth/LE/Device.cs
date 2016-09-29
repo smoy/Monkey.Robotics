@@ -67,8 +67,7 @@ namespace Robotics.Mobile.Core.Bluetooth.LE
 
 		public override Guid ID {
 			get {
-				var identifier = _nativeDevice.Identifier;
-				if (identifier != null)
+				if (_nativeDevice != null && _nativeDevice.Identifier != null)
 				{
 					return Guid.ParseExact(_nativeDevice.Identifier.AsString (), "d");
 				}
